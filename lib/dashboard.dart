@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'records.dart';
+import 'add_expense.dart';
+import 'add_balance.dart';
 
 void main() {
   runApp(const MyApp());
@@ -120,14 +122,31 @@ class HeaderBar extends StatelessWidget {
         // for logos
         Row(
           children: [
-            _buildCircleIcon(red),
-            const SizedBox(width: 8),
             _buildCircleIcon(
-              const Color(0xFF1E3A52),
+              Image.asset(
+                'lib/assets/MCC.png',
+                width: 28,
+                height: 28,
+                fit: BoxFit.cover,
+              ),
             ),
-            const SizedBox(width: 8),
+            const SizedBox(width: 5),
             _buildCircleIcon(
-              const Color(0xFF6EC6E8),
+              Image.asset(
+                'lib/assets/ICS.png',
+                width: 28,
+                height: 28,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(width: 5),
+            _buildCircleIcon(
+              Image.asset(
+                'lib/assets/SSITE.png',
+                width: 28,
+                height: 28,
+                fit: BoxFit.cover,
+              ),
             ),
           ],
         ),
@@ -135,21 +154,11 @@ class HeaderBar extends StatelessWidget {
     );
   }
 
-  Widget _buildCircleIcon(Color color) {
-    return Container(
-      width: 32,
-      height: 32,
-
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-      ),
-
-      child: const Icon(
-        Icons.close,
-        color: Colors.white,
-        size: 18,
-      ),
+  Widget _buildCircleIcon(Image image) {
+    return SizedBox(
+      width: 35,
+      height: 35,
+      child: image,
     );
   }
 }
@@ -426,7 +435,11 @@ class NewTransactionButton extends StatelessWidget {
               ),
               child: IconButton(
                 onPressed: () {
-                  print("Clicked");
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const AddBalanceScreen(),
+                    ),
+                  );
                 },
                 icon: const Icon(Icons.monetization_on_rounded, size: 30, color: Colors.white),
               ),
@@ -442,7 +455,13 @@ class NewTransactionButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
               ),
               child: IconButton(
-                onPressed: () {print("Clicked");},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const AddExpenseScreen(),
+                    ),
+                  );
+                },
                 icon: const Icon(Icons.post_add_rounded, size: 30, color: Colors.white),
               ),
             ),
@@ -705,11 +724,10 @@ class BottomNavBar extends StatelessWidget {
 
               onTap: () {
                 if (selectedIndex != 1) {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                      const TransactionRecordsScreen(),
+                      builder: (context) => const TransactionRecordsScreen(),
                     ),
                   );
                 }
