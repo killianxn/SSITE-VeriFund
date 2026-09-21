@@ -1,0 +1,32 @@
+name: ssiteverifund
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Montserrat # The nickname you'll reference in Dart code
+      fonts:
+        - asset: lib/SSITE-VeriFund/assets/Montserrat/Montserrat-VariableFont_wght.ttf
+        - asset: lib/SSITE-VeriFund/assets/Montserrat/Montserrat-Italic-VariableFont_wght.ttf
+    - family: Lora # The nickname you'll reference in Dart code
+      fonts:
+        - asset: lib/SSITE-VeriFund/assets/Lora/Lora-VariableFont_wght.ttf
+        - asset: lib/SSITE-VeriFund/assets/Lora/Lora-Italic-VariableFont_wght.ttf
