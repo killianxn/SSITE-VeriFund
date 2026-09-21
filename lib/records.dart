@@ -30,7 +30,7 @@ class TransactionRecordsScreen extends StatelessWidget {
             color: darkBlue,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context).pop();
           },
         ),
       ),
