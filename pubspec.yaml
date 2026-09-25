@@ -21,12 +21,18 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - lib/assets/
   fonts:
-    - family: Montserrat # The nickname you'll reference in Dart code
+    - family: Pixelify # The nickname you'll reference in Dart code
       fonts:
-        - asset: lib/SSITE-VeriFund/assets/Montserrat/Montserrat-VariableFont_wght.ttf
-        - asset: lib/SSITE-VeriFund/assets/Montserrat/Montserrat-Italic-VariableFont_wght.ttf
-    - family: Lora # The nickname you'll reference in Dart code
+        - asset: lib/assets/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf
+    - family: Press # The nickname you'll reference in Dart code
       fonts:
-        - asset: lib/SSITE-VeriFund/assets/Lora/Lora-VariableFont_wght.ttf
-        - asset: lib/SSITE-VeriFund/assets/Lora/Lora-Italic-VariableFont_wght.ttf
+        - asset: lib/assets/Press_Start_2P/PressStart2P-Regular.ttf
+    - family: Space # The nickname you'll reference in Dart code
+      fonts:
+        - asset: lib/assets/Space_Mono/SpaceMono-Regular.ttf
+        - asset: lib/assets/Space_Mono/SpaceMono-Bold.ttf
+        - asset: lib/assets/Space_Mono/SpaceMono-Italic.ttf
+        - asset: lib/assets/Space_Mono/SpaceMono-BoldItalic.ttf

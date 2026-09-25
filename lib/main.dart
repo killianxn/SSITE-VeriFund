@@ -1,122 +1,300 @@
 import 'package:flutter/material.dart';
+import 'dashboard.dart';
+import 'login.dart';
+import 'dart:math' as math;
+
+// COLORS
+const Color mediumBlue = Color.fromARGB(255, 142, 177, 209);
 
 void main() {
   runApp(const MyApp());
 }
 
+// APP
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        scaffoldBackgroundColor: beige,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+
+      home: const ChoiceScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+// CHOICE SCREEN
+class ChoiceScreen extends StatelessWidget {
+  const ChoiceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+      backgroundColor: beige,
+      body: SafeArea(
+        bottom: false,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SizedBox(
+              width: constraints.maxWidth,
+              height: constraints.maxHeight,
+              child: Stack(
+                children: [
+                  // TOP BLUE HEADER (With 15px padding from edges)
+                  Positioned(
+                    top: 5,
+                    left: 5,
+                    right: 5,
+                    child: Container(
+                      height: 213,
+                      decoration: const BoxDecoration(
+                        color: paleBlue,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // SSITE
+                  const Positioned(
+                    top: 160,
+                    left: 30,
+                    child: Text(
+                      'SSITE',
+                      style: TextStyle(
+                        fontFamily: 'Space',
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: darkBlue,
+                        letterSpacing: 7,
+                        shadows: [
+                          Shadow(
+                            offset: Offset(3, 2),
+                            color: lightBlue,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  // VERIFUND
+                  const Positioned(
+                    top: 190,
+                    left: 45,
+                    child: Text(
+                      'VeriFund',
+                      style: TextStyle(
+                        fontFamily: 'Press',
+                        fontSize: 35,
+                        color: darkBlue,
+                      ),
+                    ),
+                  ),
+
+                  // LOGOS
+                  Positioned(
+                    top: 160,
+                    right: 30,
+                    child: Row(
+                      children: [
+                        _buildCircleIcon(
+                          Image.asset(
+                            'lib/assets/MCC.png',
+                            width: 28,
+                            height: 28,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        _buildCircleIcon(
+                          Image.asset(
+                            'lib/assets/ICS.png',
+                            width: 28,
+                            height: 28,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        _buildCircleIcon(
+                          Image.asset(
+                            'lib/assets/SSITE.png',
+                            width: 28,
+                            height: 28,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // "ARE YOU A..."
+                  const Positioned(
+                    top: 267,
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: Text(
+                        'are you a...',
+                        style: TextStyle(
+                          fontFamily: 'Pixelify',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                          color: darkBlue,
+                          shadows: [
+                            Shadow(
+                              offset: Offset(2, 0),
+                              color: lightBlue,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // SSITE BUTTON
+                  Positioned(
+                    top: 293,
+                    left: 30,
+                    child: _buildChoiceButton(
+                      text: 'SSITE',
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+
+                  // STUDENT BUTTON
+                  Positioned(
+                    top: 293,
+                    right: 30,
+                    child: _buildChoiceButton(
+                      text: 'Student',
+                      onTap: () {
+                        // TODO: Navigate to Student screen
+                      },
+                    ),
+                  ),
+
+                  // BOTTOM DARK BLUE SHAPE (EDGE-TO-EDGE & MAXIMIZED)
+                  Positioned(
+                    top: constraints.maxHeight * 0.62,
+                    left: 0,
+                    right: 0,
+                    bottom: 0, // Fits flush to the bottom edge
+                    child: ClipPath(
+                      clipper: BottomCurveClipper(),
+                      child: Container(
+                        color: darkBlue,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+    );
+  }
+
+  // LOGO CIRCLE
+  Widget _buildCircleIcon(Image image) {
+    return SizedBox(
+      width: 35,
+      height: 35,
+      child: image,
+    );
+  }
+
+  // CHOICE BUTTON
+  static Widget _buildChoiceButton({
+    required String text,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 135,
+        height: 130,
+        decoration: BoxDecoration(
+          color: lightBlue,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: Colors.black,
+            width: 3,
+          ),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(6, 7),
+              blurRadius: 0,
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: Center(
+          child: Text(
+            text,
+            style: const TextStyle(
+              fontFamily: 'Pixelify',
+              fontSize: 27,
+              fontWeight: FontWeight.bold,
+              color: darkBlue,
+            ),
+          ),
+        ),
       ),
     );
+  }
+}
+
+// BOTTOM CURVE
+class BottomCurveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+
+    // Start from bottom-left
+    path.moveTo(0, size.height);
+
+    // Left side
+    path.lineTo(0, 115);
+
+    // Large curved top
+    path.quadraticBezierTo(
+      size.width * 0.38,
+      -10,
+      size.width,
+      35,
+    );
+
+    // Right side
+    path.lineTo(
+      size.width,
+      size.height,
+    );
+
+    // Close shape
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(
+      CustomClipper<Path> oldClipper,
+      ) {
+    return false;
   }
 }

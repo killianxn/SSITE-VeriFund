@@ -62,7 +62,7 @@ class DashboardScreen extends StatelessWidget {
                       flex: 7,
                       child: TotalFundsCard(),
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: 15),
                     Expanded(
                       flex: 3,
                       child: NewTransactionButton(),
@@ -97,25 +97,14 @@ class HeaderBar extends StatelessWidget {
 
       children: [
         // Organization name
-        const Text(
-          'SSITE',
-          style: TextStyle(
-            fontFamily: 'Lora',
-            fontSize: 22,
-            fontWeight: FontWeight.w700,
-            color: darkBlue,
-          ),
-        ),
-
         // Application name
         const Text(
           'VeriFund',
           style: TextStyle(
-            fontFamily: 'Montserrat',
+            fontFamily: 'Press',
             fontSize: 22,
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.w700,
             color: darkBlue,
-            letterSpacing: -0.5,
           ),
         ),
 
@@ -179,20 +168,30 @@ class RemainingFundsCard extends StatelessWidget {
 
       decoration: BoxDecoration(
         color: lightBlue,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: Colors.black,
+          width: 3.0,
+          style: BorderStyle.solid,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black,
+            offset: Offset(6, 7),
+          ),
+        ],
       ),
 
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'REMAINING FUNDS:',
+            'Remaining Funds:',
             style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontSize: 14,
+              fontFamily: 'Space',
+              fontSize: 15,
               fontWeight: FontWeight.w600,
               color: darkBlue,
-              letterSpacing: 0.3,
             ),
           ),
 
@@ -206,13 +205,12 @@ class RemainingFundsCard extends StatelessWidget {
           // ==================================================
 
           Text(
-            '₱ <balance>',
+            '₱ 40,000.00',
             style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontSize: 34,
-              fontWeight: FontWeight.w900,
+              fontFamily: 'Pixelify',
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
               color: darkBlue,
-              letterSpacing: -1,
             ),
           ),
         ],
@@ -230,6 +228,7 @@ class PieChartSection extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
 
+
       children: [
         // =====================================================
         // PIE CHART
@@ -239,19 +238,30 @@ class PieChartSection extends StatelessWidget {
         // Replace this placeholder with an actual pie chart.
         //
         Container(
-          width: 140,
-          height: 140,
+          width: 160,
+          height: 160,
 
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: darkBlue,
             shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.black,
+              width: 3.0,
+              style: BorderStyle.solid,
+            ),
+            boxShadow: [
+              BoxShadow(
+              color: Colors.black,
+              offset: Offset(6, 7),
+              ),
+            ],
           ),
 
           child: const Center(
             child: Text(
               'PIE CHART',
               style: TextStyle(
-                fontFamily: 'Montserrat',
+                fontFamily: 'Space',
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
                 fontSize: 13,
@@ -260,7 +270,7 @@ class PieChartSection extends StatelessWidget {
           ),
         ),
 
-        const SizedBox(width: 24),
+        const SizedBox(width: 40),
 
         // PIE CHART LEGEND
         Expanded(
@@ -309,7 +319,12 @@ class PieChartSection extends StatelessWidget {
 
           decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.circular(2),
+            borderRadius: BorderRadius.circular(4),
+            border: Border.all(
+              color: Colors.black,
+              width: 2.0,
+              style: BorderStyle.solid,
+            ),
           ),
         ),
 
@@ -323,7 +338,7 @@ class PieChartSection extends StatelessWidget {
               Text(
                 title,
                 style: const TextStyle(
-                  fontFamily: 'Montserrat',
+                  fontFamily: 'Space',
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
                   color: darkBlue,
@@ -335,7 +350,7 @@ class PieChartSection extends StatelessWidget {
               Text(
                 subtitle,
                 style: TextStyle(
-                  fontFamily: 'Montserrat',
+                  fontFamily: 'Space',
                   fontSize: 11,
                   fontWeight: FontWeight.w400,
                   color: darkBlue.withOpacity(0.7),
@@ -365,7 +380,18 @@ class TotalFundsCard extends StatelessWidget {
 
       decoration: BoxDecoration(
         color: paleBlue,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: Colors.black,
+          width: 3.0,
+          style: BorderStyle.solid,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black,
+            offset: Offset(6, 7),
+          ),
+        ],
       ),
 
       child: const Column(
@@ -373,13 +399,12 @@ class TotalFundsCard extends StatelessWidget {
 
         children: [
           Text(
-            'TOTAL FUNDS:',
+            'Total Funds:',
             style: TextStyle(
-              fontFamily: 'Montserrat',
+              fontFamily: 'Space',
               fontSize: 15,
               fontWeight: FontWeight.w700,
               color: darkBlue,
-              letterSpacing: 0.5,
             ),
           ),
 
@@ -392,9 +417,9 @@ class TotalFundsCard extends StatelessWidget {
           Text(
             '₱ TOTAL_FUNDS',
             style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
+              fontFamily: 'Pixelify',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
               color: darkBlue,
             ),
           ),
@@ -404,9 +429,9 @@ class TotalFundsCard extends StatelessWidget {
           Text(
             'Total Allocated Budget',
             style: TextStyle(
-              fontFamily: 'Montserrat',
+              fontFamily: 'Space',
               fontSize: 12,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
               color: darkBlue,
             ),
           ),
@@ -431,7 +456,18 @@ class NewTransactionButton extends StatelessWidget {
             child: Container( // for dagdag money
               decoration: BoxDecoration(
                 color: mediumBlue,
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  color: Colors.black,
+                  width: 3.0,
+                  style: BorderStyle.solid,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                    offset: Offset(6, 7),
+                  ),
+                ],
               ),
               child: IconButton(
                 onPressed: () {
@@ -446,13 +482,24 @@ class NewTransactionButton extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 5),
+          const SizedBox(height: 15),
 
           Expanded(
             child: Container( // for new expense
               decoration: BoxDecoration(
                 color: lightBlue,
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  color: Colors.black,
+                  width: 3.0,
+                  style: BorderStyle.solid,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                    offset: Offset(6, 7),
+                  ),
+                ],
               ),
               child: IconButton(
                 onPressed: () {
@@ -485,18 +532,22 @@ class LatestTransactionsSection extends StatelessWidget {
         const Text(
           'Recent Transactions',
           style: TextStyle(
-            fontFamily: 'Montserrat',
-            fontSize: 16,
+            fontFamily: 'Pixelify',
+            fontSize: 18,
             fontWeight: FontWeight.w700,
             color: darkBlue,
           ),
         ),
 
-        const SizedBox(height: 12),
+        const SizedBox(height: 5),
 
         // Horizontal scrolling transaction cards.
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(
+
+            vertical: 8,
+          ),
 
           child: Row(
             children: const [
@@ -587,12 +638,19 @@ class _TransactionCard extends StatelessWidget {
       padding: const EdgeInsets.all(10),
 
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: lightBlue,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: mediumBlue,
-          width: 2,
+          color: Colors.black,
+          width: 3.0,
+          style: BorderStyle.solid,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black,
+            offset: Offset(3, 4),
+          ),
+        ],
       ),
 
       child: Row(
@@ -608,7 +666,7 @@ class _TransactionCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
 
                   style: const TextStyle(
-                    fontFamily: 'Montserrat',
+                    fontFamily: 'Space',
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
                     color: darkBlue,
@@ -621,7 +679,7 @@ class _TransactionCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
 
                   style: TextStyle(
-                    fontFamily: 'Montserrat',
+                    fontFamily: 'Space',
                     fontSize: 9,
                     fontWeight: FontWeight.w500,
                     color: mediumBlue,
@@ -634,7 +692,7 @@ class _TransactionCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
 
                   style: const TextStyle(
-                    fontFamily: 'Montserrat',
+                    fontFamily: 'Space',
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
                     color: darkBlue,
@@ -653,7 +711,7 @@ class _TransactionCard extends StatelessWidget {
 
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(4),
             ),
           ),
         ],
@@ -676,22 +734,17 @@ class BottomNavBar extends StatelessWidget {
     return SafeArea(
       child: Container(
         height: 70,
-
         decoration: BoxDecoration(
           color: darkBlue,
-
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(35),
             topRight: Radius.circular(35),
           ),
-
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.20),
-              blurRadius: 20,
-              offset: const Offset(0, 8),
-            ),
-          ],
+          border: Border.all(
+            color: Colors.black,
+            width: 4.0,
+            style: BorderStyle.solid,
+          ),
         ),
 
         child: Row(
@@ -798,7 +851,7 @@ class _NavItem extends StatelessWidget {
           Text(
             label,
             style: TextStyle(
-              fontFamily: 'Montserrat',
+              fontFamily: 'Space',
               color: selected
                   ? lightBlue
                   : Colors.white.withOpacity(0.6),
